@@ -1,19 +1,21 @@
 const readlineSync = require('readline-sync')
 const chalk = require('chalk')
-let nb = readlineSync.question('Enter a number: ')
+let nb = ''
 
 do {
+
   nb = readlineSync.question('Enter a number: ')
+
   if (isNaN(Number(nb)) === false) {
+
     if (Number(process.argv[2]) === Number(nb)) {
-      console.log('Bravo!')
+      console.log(chalk.green('Bravo!'))
     } else if (Number(process.argv[2]) > Number(nb)) {
-      console.log('Nombre trop petit')
+      console.log(chalk.red('Nombre trop petit'))
     } else {
-      console.log('Nombre trop grand')
+      console.log(chalk.red('Nombre trop grand'))
     }
   } else {
-    console.log('This is not a number! ')
+    console.log(chalk.red('This is not a number!'))
   }
-}
-while (Number(process.argv[2]) !== Number(nb))
+} while (Number(process.argv[2]) !== Number(nb))
